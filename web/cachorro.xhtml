@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Cachorro</title>
+        <link rel="shortcut icon" href="#{resource['_img/dog.ico']}" type="image/x-icon"/>  
+    </h:head>
+    <h:body>
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div style=" width: 100%; padding: 20px;">
+            <b:panel title="Cadastar Cachorro" collapsible="true" look="success">
+                <b:form>
+                    <b:inputText label="Nome" placeholder="Bob" type="text" tiny-screen="one-third" value="#{cachorroBean.nome}"
+                                 required="true" requiredMessage="O campo 'Nome' é de preenchimento obrigatório."/>
+                    <b:inputText label="Raça" placeholder="Vira lata" type="text" tiny-screen="one-third" value="#{cachorroBean.raca}"
+                                 required="true" requiredMessage="O campo 'Raça' é de preenchimento obrigatório."
+                                 typeahead="true" typeahead-values="Boxer, Pitbull, Vira lata, Pinscher, Dachshund, Pastor-alemão"/>
+                    <b:inputText label="Idade" type="number" tiny-screen="one-fourth" value="#{cachorroBean.idade}"/>
+                    <b:commandButton iconAwesome="plus" icon-size="mg" value="Incluir" class="btn btn-lg" 
+                                     title="Incluir" look="success" style="margin-top: 15px" action="#{cachorroBean.addCachorro()}"/> 
+                </b:form>
+            </b:panel>
+        </div>
+        
+        <div style=" width: 100%; padding: 20px;">
+            <b:panel class="painel3" collapsible="true" title="Visualizar" look="info" rendered="true">
+                <b:form>
+                    <b:row style="padding: 15px">
+                        <b:dataTable customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json" 
+                                     class="table table-striped table-bordered" 
+                                     value = "#{cachorroBean.cachorro}"
+                                     var="cachorro"
+                                     style=" margin-left: auto; margin-right: auto; width: 100%; position: relative;"
+                                     responsive="true">
+
+                            <b:dataTableColumn value="#{cachorro.nome}" label="Nome"/>
+                            <b:dataTableColumn value="#{cachorro.raca}" label="Raça"/>
+                            <b:dataTableColumn value="#{cachorro.idade}" label="Idade"/>
+                            <b:dataTableColumn label="Opções" style="width: 170px">
+                                <h:panelGrid style="width: 170px; margin-left: auto; margin-right: auto" columns="2">
+                                    <b:commandButton iconAwesome="trash-o" value="Remover" size="sm" class="btn btn-lg"
+                                                     title="Remover Item" look="danger"  action="#{cachorroBean.remover(cachorro)}" />
+                                    <b:commandButton iconAwesome="edit" value="Editar" size="sm" class="btn btn-lg"
+                                                     title="Editar Item" look="info"  action="#{cachorroBean.editar(cachorro)}" />
+                                </h:panelGrid>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:row>
+                </b:form>
+            </b:panel>
+        </div>
+    </h:body>
+</html>
+

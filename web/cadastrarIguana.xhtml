@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Cadastrar Iguana</title>
+        <link rel="shortcut icon" href="#{resource['_img/iguana.ico']}" type="image/x-icon"/>   
+    </h:head>
+    <h:body>
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div style=" width: 100%; padding: 20px;">
+            <b:panel title="Cadastar Iguana" collapsible="false" look="success">
+                <b:form>
+                    <b:inputText label="Nome" placeholder="Julesca" type="text" tiny-screen="one-third" value="#{iguanaBean.nome}"
+                                 required="true" requiredMessage="O campo 'Nome' é de preenchimento obrigatório."/>
+                    <b:inputText label="Idade" type="number" tiny-screen="one-fourth" value="#{iguanaBean.idade}"/>
+                    <b:commandButton iconAwesome="plus" icon-size="mg" value="Incluir" class="btn btn-lg" 
+                                     title="Incluir" look="success" style="margin-top: 15px" action="#{iguanaBean.addIguana()}"/> 
+                </b:form>
+            </b:panel>
+        </div>
+    </h:body>
+</html>
+

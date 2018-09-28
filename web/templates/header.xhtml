@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+        <ui:composition>
+            <b:navBar class="navbar navbar-light" style="background-color: #e3f2fd;" fluid="true">
+                <b:navbarLinks>
+                    <b:navLink value="Início" style="font-size: 20px; color: black;" iconAwesome="fa-home" href="./index.xhtml"></b:navLink>
+                    <b:dropMenu value="Animais" style="font-size: 18px; color: black;" iconAwesome="fa-paw">
+                        <b:navLink value="Cachorro" style="font-size: 16px; color: black;" href="./cachorro.xhtml"/>
+                        <b:dropMenu value="Gato" style="font-size: 16px; color: black;" >
+                            <b:navLink value="Cadastrar Gato" style="font-size: 16px; color: black;" iconAwesome="fa-plus" href="./cadastrarGato.xhtml"/>
+                            <b:navLink value="Visualizar Gato" style="font-size: 16px; color: black;" iconAwesome="fa-search" href="./visualizarGato.xhtml"/>
+                        </b:dropMenu>
+                        <b:dropMenu value="Iguana" style="font-size: 16px; color: black;" >
+                            <b:navLink value="Cadastrar Iguana" style="font-size: 16px; color: black;" iconAwesome="fa-plus" href="./cadastrarIguana.xhtml"/>
+                            <b:navLink value="Visualizar Iguana" style="font-size: 16px; color: black;" iconAwesome="fa-search" href="./visualizarIguana.xhtml"/>
+                        </b:dropMenu>
+                        <b:dropMenu value="Cobra" style="font-size: 16px; color: black;" >
+                            <b:navLink value="Cadastrar Cobra" style="font-size: 16px; color: black;" iconAwesome="fa-plus" href="./cadastrarCobra.xhtml"/>
+                            <b:navLink value="Visualizar Cobra" style="font-size: 16px; color: black;" iconAwesome="fa-search" href="./visualizarCobra.xhtml"/>
+                        </b:dropMenu>
+                    </b:dropMenu>
+                </b:navbarLinks>            
+            </b:navBar>
+        </ui:composition>
+    </h:body>  
+</html>

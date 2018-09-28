@@ -6,11 +6,37 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Início</title>
+        <link rel="shortcut icon" href="#{resource['_img/inicio.ico']}" type="image/x-icon"/>  
     </h:head>
     <h:body>
-        <ui:composition template="template/layout.xhtml">
-
-        </ui:composition>
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/templates/header.xhtml" />
+            </ui:insert>
+        </div>
+        <h:form>
+            <center>
+                <b:carousel id="animais" style="width:600px">
+                    <b:carouselItem>
+                        <img src="./resources/_img/snake.png" alt="snake" />
+                    </b:carouselItem>
+                    <b:carouselItem>
+                        <img src="./resources/_img/cat1.png" alt="cat" />
+                    </b:carouselItem>
+                    <b:carouselItem>
+                        <img src="./resources/_img/dog.png" alt="dog" />
+                    </b:carouselItem>
+                    <b:carouselItem>
+                        <img src="./resources/_img/iguana.png" alt="iguana" />
+                    </b:carouselItem>
+                    <b:carouselItem>
+                        <img src="./resources/_img/animais.png" alt="animais" />
+                    </b:carouselItem>                    <b:carouselItem>
+                        <img src="./resources/_img/cat2.png" alt="cat" />
+                    </b:carouselItem>
+                </b:carousel>
+            </center>
+        </h:form>
     </h:body>
 </html>
 

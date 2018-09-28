@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Cadastrar Cobra</title>
+        <link rel="shortcut icon" href="#{resource['_img/cobra.ico']}" type="image/x-icon"/>   
+    </h:head>
+    <h:body>
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/templates/header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <b:container fluid="true">
+            <b:panel title="Cadastar Cobra" collapsible="false" look="success">
+                <b:form>
+                    <b:row>
+                        <b:column medium-screen="3">
+                            <b:inputText label="Nome" placeholder="Julesca" type="text" value="#{cobraBean.nome}"
+                                         required="true" requiredMessage="O campo 'Nome' é de preenchimento obrigatório."/>
+                        </b:column> 
+                        <b:column medium-screen="3">
+                            <b:inputText label="Data de Captura" placeholder="Julesca" type="date" value="#{cobraBean.dataCaptura}"
+                                         required="true" requiredMessage="O campo 'Nome' é de preenchimento obrigatório."/>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <b:inputText label="Tamanho" mask="integer"  value="#{cobraBean.tamanho}">
+                                <f:facet name="prepend">
+                                    <h:outputText value="cm" />
+                                </f:facet>
+                            </b:inputText>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <b:inputText label="Peso" mask="decimal"  value="#{cobraBean.peso}">
+                                <f:facet name="prepend">
+                                    <h:outputText value="kg" />
+                                </f:facet>
+                            </b:inputText>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="3">
+                            <b:commandButton iconAwesome="plus" icon-size="mg" value="Incluir" class="btn btn-lg" 
+                                             title="Incluir" look="success" style="margin-top: 15px" action="#{cobraBean.addCobra()}"/> 
+                        </b:column>
+                    </b:row>
+                </b:form>
+            </b:panel>
+        </b:container>
+    </h:body>
+</html>
+
