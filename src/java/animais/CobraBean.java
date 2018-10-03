@@ -5,7 +5,10 @@
  */
 package animais;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -35,24 +38,21 @@ public class CobraBean {
         this.peso = peso;
     }
 
-    
     public void limparTela() {
         nome = "";
         dataCaptura = "";
         tamanho = 0;
         peso = 0.0;
     }
-    
-    
-//    String dataEmUmFormato = "2009-10-30";
-//SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-//Date data = formato.parse(dataEmUmFormato);
-//formato.applyPattern("dd/MM/yyyy");
-//String dataFormatada = formato.format(data);
-    
-    
-    public String addCobra() {
-        CobraBean novo = new CobraBean(this.nome, this.dataCaptura, this.tamanho, this.peso);
+
+    public String addCobra() throws ParseException {
+        String dataEmUmFormato = this.dataCaptura;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date data = formato.parse(dataEmUmFormato);
+        formato.applyPattern("dd/MM/yyyy");
+        String dataFormatada = formato.format(data);
+
+        CobraBean novo = new CobraBean(this.nome, dataFormatada, this.tamanho, this.peso);
         cobra.add(novo);
         limparTela();
         return "visualizarCobra";
@@ -62,14 +62,22 @@ public class CobraBean {
         cobra.remove(c);
     }
 
-    public String editar(CobraBean c) {
-        nome = c.getNome();
-
+    public String editar(CobraBean c) throws ParseException {
+        String dataEmUmFormato = c.dataCaptura;
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date data = formato.parse(dataEmUmFormato);
+        formato.applyPattern("yyyy-MM-dd");
+        String dataFormatada = formato.format(data);
+              
+        this.nome = c.getNome();
+        this.dataCaptura = dataFormatada;
+        this.tamanho = c.tamanho;
+        this.peso = c.peso;
+        
         cobra.remove(c);
         return "cadastrarCobra";
     }
 
-    
     public String getNome() {
         return nome;
     }
@@ -101,7 +109,6 @@ public class CobraBean {
     public void setPeso(double peso) {
         this.peso = peso;
     }
-
 
     public List<CobraBean> getCobra() {
         return cobra;
